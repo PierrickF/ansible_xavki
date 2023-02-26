@@ -34,3 +34,21 @@ Files that map roles to the inventory.
 
 * **plugins**<br>
 Packages, libraries, plugins for Ansible.
+
+# 2. Installation
+
+* With `apt`<br>
+```
+sudo apt install ansible
+```
+* With `pip`<br>
+```
+sudo apt install python3-pip
+pip3 install ansible
+```
+
+* The managed node requires Python.<br>
+If Ansible fails to detect it we can specify it in the inventory file:<br>
+```
+ansible_python_interpreter=/usr/bin/python3
+```
