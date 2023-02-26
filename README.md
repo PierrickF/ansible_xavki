@@ -37,18 +37,29 @@ Packages, libraries, plugins for Ansible.
 
 # 2. Installation
 
-* With `apt`<br>
-```
-sudo apt install ansible
-```
-* With `pip`<br>
-```
-sudo apt install python3-pip
-pip3 install ansible
-```
+* With `apt`:<br>
+`sudo apt install ansible`
+* With `pip`:<br>
+`sudo apt install python3-pip`<br>
+`pip3 install ansible`
 
 * The managed node requires Python.<br>
 If Ansible fails to detect it we can specify it in the inventory file:<br>
-```
-ansible_python_interpreter=/usr/bin/python3
-```
+`ansible_python_interpreter=/usr/bin/python3`
+
+# 3. SSH Setup
+
+1. If working with Docker, setup a virtual network:<br>
+`docker network create my_network`
+
+2. Add each container to the virtual network:<br>
+`docker network connect my_network my_container`
+
+3. Install SSH and start the SSH service on both machines.
+
+4. Generate an SSH key on the control node with `ssh-keygen`.
+
+5. Copy the key to the managed node with `ssh-copy-id`.
+
+6. Check that Ansible can use SSH:<br>
+`ansible -i "managed_node_name_or_ip," all -m ping`
